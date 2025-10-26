@@ -1,7 +1,29 @@
 ---
-title: "Portfolio item number 2"
-excerpt: "Short description of portfolio item number 2 <br/><img src='/images/500x300.png'>"
+title: "WhatsApp → n8n → Notion Expense Logger"
+excerpt: "Log expenses by self-messaging on WhatsApp; an n8n workflow normalizes and parses the payload, then creates a structured page in Notion.<br/><img src='images\n8n-whatsapp-notetaking.png'>"
 collection: portfolio
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+<h2>Overview</h2>
+<ul>
+  <li>Log expenses by sending yourself a WhatsApp message; an n8n workflow parses it and creates a page in a Notion database.</li>
+  <li>Supports text, voice (ptt), and image messages; voice/image can be transcribed/OCR’d in your workflow.</li>
+  <li>Designed for fast capture and structured storage with minimal friction.</li>
+</ul>
+
+<h2>Key Features</h2>
+<ul>
+  <li>WhatsApp self-message trigger captured via <code>whatsapp-web.js</code>.</li>
+  <li>n8n webhook receives normalized payloads and runs parsing logic.</li>
+  <li>Notion page creation with <code>Expense</code> (title), <code>Amount</code> (number), and <code>Category</code> (relation to Category database).</li>
+  <li>Category selection uses closest-match logic to resolve to a Category page ID.</li>
+</ul>
+
+<h2>Message Examples</h2>
+<ul>
+  <li><code>Coffee, Groceries, 42</code></li>
+  <li><code>Expense: Uber; Category: Transport; Amount: 98.5</code></li>
+  <li><code>Lunch - Food - 65</code></li>
+</ul>
+
+<img src="images\n8n-whatsapp-notetaking.png" alt="n8n WhatsApp Note-taking">

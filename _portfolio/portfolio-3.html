@@ -1,0 +1,23 @@
+---
+title: "AI Wiki Chatbot (Streamlit + Hybrid Retrieval)"
+excerpt: "A Streamlit-based AI wiki chatbot that delivers grounded answers from curated web pages using a hybrid retrieval pipeline.<br/><img src='/images/rag-chatbot.png' alt='AI Wiki Chatbot preview'>"
+collection: portfolio
+header:
+  teaser: "rag-chatbot.png"
+---
+
+<h2>Overview</h2>
+<p>
+A grounded QA chatbot that answers questions from a curated set of web pages (wiki-like knowledge). It combines symbolic search (BM25) and dense retrieval (FAISS embeddings) and then reranks with a cross-encoder to ensure the most relevant contexts are fed to the LLM. The app is built with Streamlit and LangChain 0.3 and is organized into modular components for clean maintenance and extensibility.
+</p>
+
+<h2>Key Features</h2>
+<ul>
+  <li>Streamlit UI for fast iteration and shareable demos.</li>
+  <li>Hybrid retrieval: BM25 keyword search + FAISS vector search.</li>
+  <li>Cross-encoder reranking for high-precision context selection.</li>
+  <li>Grounded answers with citations to source pages.</li>
+  <li>Composable LangChain 0.3 modules for loaders, chunkers, retrievers, rerankers, and synthesizers.</li>
+</ul>
+
+<img src="/images/rag-chatbot.png" alt="AI Wiki Chatbot preview">
