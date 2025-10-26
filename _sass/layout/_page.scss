@@ -59,6 +59,13 @@
     font-size: 1em;
   }
 
+  /* Make images fit the content width */
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
