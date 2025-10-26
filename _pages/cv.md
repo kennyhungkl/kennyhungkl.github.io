@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* B.S. in Computer Engineering, The Hong Kong University of Science and Technology, 2025
+* B.E. in Computer Engineering, The Hong Kong University of Science and Technology, 2025
   * CGA: 3.438/4.3
   * Honors: Dean's list, Fall 2023-24
   * Relevant coursework:
