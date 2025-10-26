@@ -66,10 +66,10 @@
   }
 }
 
-/* Ensure images inside excerpts render at a fixed width */
+/* Ensure images inside excerpts render at a max width */
 .archive__item-excerpt img {
-  width: 600px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
   height: auto;
   display: block;
 }
