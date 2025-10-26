@@ -1,7 +1,7 @@
 ---
 title: "Retinal Image Analysis"
 excerpt: "AI-driven computer vision system to diagnose eye diseases from OCT images."
-image: "/images/500x300.png"
+image: "/images/OCT_preview.png"
 collection: portfolio
 ---
 
