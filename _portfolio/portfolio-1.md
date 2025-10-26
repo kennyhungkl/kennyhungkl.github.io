@@ -1,6 +1,7 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "Retinal Image Analysis"
+excerpt: "AI-driven computer vision system to diagnose eye diseases from OCT images."
+image: "/images/500x300.png"
 collection: portfolio
 ---
 

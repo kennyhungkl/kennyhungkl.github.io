@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # Currently available options are "default", "air"
+site_theme               : "air" # Currently available options are "default", "air"
 title                    : "Kenny Hung"
 title_separator          : "-"
 name                     : &name "Kenny Hung"
@@ -26,9 +26,9 @@ author:
   avatar           : "profile.png"
   name             : "Kenny Hung"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "A motivated Computer Engineering graduate with a strong foundation in machine learning and computer vision, seeking opportunities to collaborate and innovate within dynamic teams."
   location         : "Hong Kong"
-  employer         : "The Hong Kong University of Science and Technology"
+  employer         : "HKUST"
   uri              : # URL
   email            : "kennyhungkl@gmail.com" 
 
