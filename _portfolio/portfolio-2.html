@@ -1,7 +1,9 @@
 ---
 title: "WhatsApp → n8n → Notion Expense Logger"
-excerpt: "Log expenses by self-messaging on WhatsApp; an n8n workflow normalizes and parses the payload, then creates a structured page in Notion.<br/><img src='/images/n8n-whatsapp-notetaking.png' alt='n8n WhatsApp Note-taking'>"
+excerpt: "Log expenses by self-messaging on WhatsApp; an n8n workflow normalizes and parses the payload, then creates a structured page in Notion.<br/><img src='/images/n8n-whatsapp-notetaking.png' alt='n8n WhatsApp Note-taking' width='100%' max-width='600px' style='height:auto'>"
 collection: portfolio
+header:
+  teaser: "n8n-whatsapp-notetaking.png"
 ---
 
 <h2>Overview</h2>
@@ -19,11 +21,82 @@ collection: portfolio
   <li>Category selection uses closest-match logic to resolve to a Category page ID.</li>
 </ul>
 
+<h2>How It Works</h2>
+<ol>
+  <li>You send a message to yourself on WhatsApp.</li>
+  <li>The trigger forwards payload (<code>type</code>, <code>message</code>, optional <code>mimetype</code>) to n8n via <code>N8N_WEBHOOK_URL</code>.</li>
+  <li>The workflow extracts <code>Expense</code>, resolves <code>Category</code> to a Category page ID, and parses <code>Amount</code>.</li>
+  <li>A Notion page is created in your Expense database with the parsed fields.</li>
+</ol>
+
 <h2>Message Examples</h2>
 <ul>
   <li><code>Coffee, Groceries, 42</code></li>
   <li><code>Expense: Uber; Category: Transport; Amount: 98.5</code></li>
   <li><code>Lunch - Food - 65</code></li>
+  <li>Voice/image: send a voice note or receipt photo; your n8n workflow transcribes/reads to extract fields.</li>
 </ul>
 
-<img src='/images/n8n-whatsapp-notetaking.png' alt='n8n WhatsApp Note-taking'>
+<h2>Requirements</h2>
+<ul>
+  <li><code>Node.js 18+</code></li>
+  <li><code>n8n</code> running with an Active workflow (<code>/webhook/&lt;id&gt;</code>)</li>
+  <li>Notion integration connected to:
+    <ul>
+      <li>Expense database: <code>Expense</code> (title), <code>Amount</code> (number), <code>Category</code> (relation)</li>
+      <li>Category database: category names as titles; keep names unique</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Quick Start</h2>
+<ol>
+  <li><code>n8n-whatsapp-trigger/index.js</code> reads <code>N8N_WEBHOOK_URL</code> from <code>.env</code>.</li>
+  <li>Install and run the trigger:
+    <ul>
+      <li><code>cd n8n-whatsapp-trigger</code></li>
+      <li><code>npm install</code></li>
+      <li>
+        <pre><code>npm start</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>Scan the QR code with WhatsApp; session persists in <code>.wwebjs_auth/</code>.</li>
+</ol>
+
+<h2>Workflow Import</h2>
+<ol>
+  <li>Import <code>My workflow.json</code> in n8n: Workflows → Import from File.</li>
+  <li>Copy the production webhook URL from the Webhook node.</li>
+  <li>Set <code>N8N_WEBHOOK_URL</code> in <code>n8n-whatsapp-trigger/.env</code>.</li>
+  <li>Activate the workflow and test by sending yourself a message.</li>
+</ol>
+
+<h2>Notion Mapping</h2>
+<ul>
+  <li><code>Expense</code> → Notion title</li>
+  <li><code>Amount</code> → Notion number</li>
+  <li><code>Category</code> → Notion relation using resolved Category page ID</li>
+  <li>Date can be auto-set to <code>now</code> with a timezone if desired.</li>
+</ul>
+
+<h2>Security &amp; Hygiene</h2>
+<ul>
+  <li>Secrets and session data are ignored by <code>.gitignore</code>; do not commit <code>.env</code>, <code>.wwebjs_auth/</code>, or <code>.wwebjs_cache/</code>.</li>
+  <li>Use the production webhook (<code>/webhook/&lt;id&gt;</code>) instead of <code>/webhook-test</code>.</li>
+</ul>
+
+<h2>Deployment Tips</h2>
+<ul>
+  <li>Keep the trigger always-on with PM2 on Windows:
+    <pre><code>pm2 start index.js --name whatsapp-trigger</code></pre>
+  </li>
+  <li>Consider running n8n via Docker for persistence and easy upgrades.</li>
+</ul>
+
+<h2>Roadmap</h2>
+<ul>
+  <li>Add automated transcription/OCR nodes for voice and image receipts.</li>
+  <li>Add currency detection and conversion.</li>
+  <li>Add duplicate prevention and optional approval steps.</li>
+</ul>

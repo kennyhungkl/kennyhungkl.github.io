@@ -32,6 +32,11 @@ Project Experience
   * Conducted data preprocessing, model training, and evaluation.
   * Achieved a diagnostic accuracy of 99%, demonstrating the effectiveness of AI in medical imaging.
 
+Certification
+======
+* Sep 2026: Azure AI Engineer Associate (AI-102)
+  * Focused on building AI-infused applications using Azure AI Foundry and services, covering topics such as generative AI, AI agents, computer vision, and information extraction.
+
 Skills
 ======
 * Language
